@@ -1,0 +1,30 @@
+public class Prime10000Eratosthenes {
+
+	public static void main(String[] args) {
+		int size = 10000;
+		boolean[] numList = new boolean[size+1];
+		numList[0] = true;
+		numList[1] = true;
+		int i = 0;
+		for(boolean num :numList) {
+			if(!num) {
+				int j = i*i;
+				while(j<=size) {
+					numList[j] = true;
+					j += i;
+				}
+			}
+			i++;
+		}
+		int x = 0;
+		for(int n = 2;n<numList.length;n++) {
+			if(!numList[n]) {
+				System.out.printf("%6d",n );
+				x++;
+			}
+			if(x<10) continue;
+			System.out.println();
+			x = 0;
+		}
+	}
+}
